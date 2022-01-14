@@ -1,25 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <title>Create</title>
-    
-</head>
-<body>
+@extends('layouts.app')
+@section('content')
+
 
 <div class="title">
         <h1> NEW ANIMAL </h1>
 </div>
 
-<form method="POST" action="{{ route('home.dashboard.store') }}" enctype="multipart/form-data" >
-@crsf
+<form method="POST" action="{{ route('dashboard.store') }}" enctype="multipart/form-data">
+@csrf
 
   <div class="form-group">
     <label for="exampleFormControlInput1"> Name</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter the animal's name">
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter the animal's name">
   </div>
 
   @error('name_animal')
@@ -74,6 +66,4 @@
 
 </form>
 
-</body>
-</html>
-
+@endsection

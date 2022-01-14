@@ -13,4 +13,10 @@ class Animal extends Model
         'description',
         'image',
     ];
+
+    public function family() 
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
 }

@@ -8,7 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Continent extends Model
 {
     use HasFactory;
-    protected $guarded = [
-        'name',
-    ];
+    protected $guarded = [];
 }

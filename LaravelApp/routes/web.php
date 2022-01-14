@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\FamilyController;
 use Illuminate\Support\Facades\Route;
-
+use Symfony\Component\Routing\RouteCompiler;
+use App\Http\Controllers\AnimalController;
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +19,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+
+Route::prefix('dashboard')->group(function(){
+
+    Route::get('index',[AnimalController::class, 'index'])->name('dashboard.index');
+    Route::get('create',[AnimalController::class, 'create'])->name('dashboard.create');
+    Route::post('store',[AnimalController::class, 'store'])->name('dashboard.store');
+    
+});
+
+
+
+
+

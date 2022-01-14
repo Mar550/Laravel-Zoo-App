@@ -13,4 +13,9 @@ class Family extends Model
         'libelle',
         'description',
     ];
+
+    public function animal()
+    {
+        $this->hasMany(Animal::class, ('animal_id'));
+    }
 }
