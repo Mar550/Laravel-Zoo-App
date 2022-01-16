@@ -9,9 +9,6 @@ class Animal extends Model
 {
     use HasFactory;
     protected $guarded = [
-        'name',
-        'description',
-        'image',
     ];
 
     public function family() 

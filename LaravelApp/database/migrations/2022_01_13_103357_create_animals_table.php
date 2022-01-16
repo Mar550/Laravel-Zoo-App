@@ -19,6 +19,7 @@ class CreateAnimalsTable extends Migration
             $table->string('description');
             $table->string('image');
             $table->foreignId('family_id')->constrained('families')->onDelete('cascade');
+            $table->string('animal_continent');
             $table->timestamps();
         });
     }

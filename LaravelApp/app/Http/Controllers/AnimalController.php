@@ -6,6 +6,9 @@ use App\Models\Animal;
 use App\Models\Continent;
 use App\Models\Family;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
+ 
 
 class AnimalController extends Controller
 {
@@ -40,14 +43,13 @@ class AnimalController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name_animal' => 'required|unique:categories',
-            'description' => 'required|string',
+            'name_animal' => 'required|unique:animals',
+            'description' => 'required|string:animals',
             'image' => 'required|max:2048',
         ],[
             'name_animal.required' => 'Animal name is required',
             'name_animal.unique' => 'Animal name is unique',
             'description.required' => 'Description is required',
-            'description.unique' => 'Description is unique',
             'description.string' => 'The description must contain characters',
             'image.max' => 'The maximum upload file is 2M',
         ]);
@@ -57,10 +59,12 @@ class AnimalController extends Controller
         Animal::create([
             'name_animal' => $request->name_animal,
             'description' => $request->description,
+            'family_id' => $request->family_id,
+            'animal_continent' => $request->animal_continent,
             'image' => $path,
+
         ]);
-        
-        $request->session()->put('message', 'Animal created successfully');
+        Session::put('message', 'Animal create successfully');
         return redirect()->route('dashboard.index')->with('message','Category created successfully');
     }
 

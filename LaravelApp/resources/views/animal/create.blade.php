@@ -1,18 +1,26 @@
 @extends('layouts.app')
+
+
 @section('content')
 
+<section class="sectionsidebar">
 
+
+</section>
+<section class="sectioncreate">
 <div class="title">
-        <h1> NEW ANIMAL </h1>
+        <h1 class="formtitle"> ADD NEW ANIMAL </h1>
 </div>
 
+<div class="divform">
 <form method="POST" action="{{ route('dashboard.store') }}" enctype="multipart/form-data">
 @csrf
 
-  <div class="form-group">
+  <div class="form-group 1">
     <label for="exampleFormControlInput1"> Name</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter the animal's name">
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter the animal's name" name="name_animal">
   </div>
+    
 
   @error('name_animal')
     <span class="invalid-feedback" role="alert">
@@ -20,27 +28,10 @@
     </span> 
   @enderror
 
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Family</label>
-    <select class="form-control">
-        @foreach($families as $family)
-        <option> {{ $family->libelle }} </option>
-        @endforeach
-    </select>
-  </div>
 
-  <div class="form-group">
-    <label for="exampleFormControlSelect1"> Continent</label>
-    <select class="form-control">
-        @foreach($continents as $continent)
-        <option> {{ $continent->continent_name }} </option>
-        @endforeach
-    </select>
-  </div>
-  
-  <div class="form-group">
+  <div class="form-group 2">
     <label for="exampleFormControlTextarea1"> Description </label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Enter the animal's description" rows="3"></textarea>
+    <textarea class="form-control2" id="exampleFormControlTextarea1" placeholder="Enter the animal's description" rows="3" name="description"></textarea>
   </div>
 
   @error('description')
@@ -49,9 +40,28 @@
     </span> 
   @enderror
 
-  <div class="form-group">
+  <div class="form-group 3">
+    <label for="exampleFormControlSelect1">Family</label>
+    <select class="form-control" name="family_id">
+        @foreach($families as $family)
+        <option name="family_id" value="{{$family->libelle}}"> {{ $family->libelle }} </option>
+        @endforeach
+    </select>
+  </div>
+
+  <div class="form-group 4">
+    <label for="exampleFormControlSelect1"> Continent</label>
+    <select class="form-control" name="animal_continent">
+        @foreach($continents as $continent)
+        <option name="animal_continent" value="{{ $continent->continent_name }}"> {{ $continent->continent_name }} </option>
+        @endforeach
+    </select>
+  </div>
+  
+
+  <div class="form-group 5">
     <label for="exampleFormControlFile1"> Picture </label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
   </div>
 
   @error('image')
@@ -60,10 +70,11 @@
     </span> 
   @enderror
 
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary"> CREATE </button>
+  <div class="form-group 6">
+    <button type="submit" class="submitform"> CREATE </button>
   </div>
+</section>
 
 </form>
-
+</div>
 @endsection
