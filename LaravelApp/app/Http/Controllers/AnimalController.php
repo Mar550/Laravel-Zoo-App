@@ -7,7 +7,6 @@ use App\Models\Continent;
 use App\Models\Family;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-
  
 
 class AnimalController extends Controller
@@ -19,7 +18,8 @@ class AnimalController extends Controller
      */
     public function index()
     {
-    
+        $animals = Animal::orderBy('name_animal')->get();
+        return view('animal.index', compact('animals'));
     }
 
     /**

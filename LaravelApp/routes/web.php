@@ -24,7 +24,6 @@ Route::get('/', function () {
 
 
 Route::prefix('dashboard')->group(function(){
-
     Route::get('index',[AnimalController::class, 'index'])->name('dashboard.index');
     Route::get('create',[AnimalController::class, 'create'])->name('dashboard.create');
     Route::post('store',[AnimalController::class, 'store'])->name('dashboard.store');

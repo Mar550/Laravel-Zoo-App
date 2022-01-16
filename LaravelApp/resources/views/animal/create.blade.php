@@ -3,10 +3,7 @@
 
 @section('content')
 
-<section class="sectionsidebar">
 
-
-</section>
 <section class="sectioncreate">
 <div class="title">
         <h1 class="formtitle"> ADD NEW ANIMAL </h1>

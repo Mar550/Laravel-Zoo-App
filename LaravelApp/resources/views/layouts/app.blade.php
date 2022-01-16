@@ -22,7 +22,7 @@
         
     </head>
     <body class="antialiased">
-
+    <div class="homepage">
     <div class="sidebar-container">
   <div class="sidebar-logo">
     LARAVEL ZOO
@@ -61,6 +61,7 @@
         <div>
             @yield('content')
 
-        </div>
+          </div>
+          </div>
     </body>
 </html>
