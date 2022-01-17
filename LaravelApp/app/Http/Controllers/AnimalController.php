@@ -18,8 +18,7 @@ class AnimalController extends Controller
      */
     public function index()
     {
-        $animals = Animal::orderBy('name_animal')->get();
-        return view('animal.index', compact('animals'));
+        return view('animal.index');
     }
 
     /**
@@ -28,10 +27,13 @@ class AnimalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {     
         $families = Family::all();
+
         $continents = Continent::all();
         return view('animal.create', compact('families','continents'));
+        
+
     }
 
     /**

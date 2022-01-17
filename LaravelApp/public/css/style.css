@@ -128,8 +128,11 @@ button :hover {
 }
 
 .new{
-    margin-top: 2%;
-    text-align: center;
+    margin-top: 18%;
+    background-color: gainsboro;
+    justify-content: center;
+    margin-left: 50%;
+    margin-right: 50%;
 }
 
 .btn btn-primary{
@@ -275,6 +278,33 @@ body{
 
 
 /* INDEX TABLE */
+
+
+.add{
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    margin-left: 12rem;
+
+}
+
+.add:hover{
+    cursor:pointer;
+    background-color: black;
+    color:white;
+}
+
+.indextitle{
+    text-align: center;
+    font-weight: bold;
+    font-family:Verdana, Geneva, Tahoma, sans-serif; 
+
+
+}
+.create{
+    text-align: center;
+
+}
 
 table { 
 	width: 72rem; 

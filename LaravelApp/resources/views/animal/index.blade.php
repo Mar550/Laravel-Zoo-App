@@ -5,6 +5,10 @@
 
 <section class="sectionindex">
 
+<div>
+  <h2 class="indextitle"> OUR ANIMALS</h2>
+</div>
+
 <div class="divtable">
 <table>
   <thead> 

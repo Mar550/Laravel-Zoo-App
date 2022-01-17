@@ -38,19 +38,26 @@
   @enderror
 
   <div class="form-group 3">
+
     <label for="exampleFormControlSelect1">Family</label>
-    <select class="form-control" name="family_id">
-        @foreach($families as $family)
-        <option name="family_id" value="{{$family->libelle}}"> {{ $family->libelle }} </option>
+    <select class="form-control" name="family_id" >
+    @foreach($families as $family)
+
+        <option value="{{$family->id}}" >  {{ $family->libelle }}</option>
         @endforeach
-    </select>
+
+      </select>
+
+
   </div>
+
+
 
   <div class="form-group 4">
     <label for="exampleFormControlSelect1"> Continent</label>
     <select class="form-control" name="animal_continent">
         @foreach($continents as $continent)
-        <option name="animal_continent" value="{{ $continent->continent_name }}"> {{ $continent->continent_name }} </option>
+        <option name="animal_continent" value="{{ $continent->id }}"> {{ $continent->continent_name }} </option>
         @endforeach
     </select>
   </div>
