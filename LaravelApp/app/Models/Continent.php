@@ -9,4 +9,6 @@ class Continent extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+
 }

@@ -8,12 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Animal extends Model
 {
     use HasFactory;
-    protected $guarded = [
-    ];
+    protected $guarded = [];
 
     public function family() 
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsTo(Family::class, 'family_id');
     }
 
 }

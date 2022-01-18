@@ -5,9 +5,7 @@
 
 
 <section class="sectioncreate">
-<div class="title">
-        <h1 class="formtitle"> ADD NEW ANIMAL </h1>
-</div>
+
 
 <div class="divform">
 <form method="POST" action="{{ route('dashboard.store') }}" enctype="multipart/form-data">
@@ -51,6 +49,7 @@
 
   </div>
 
+  
 
 
   <div class="form-group 4">
@@ -77,6 +76,8 @@
   <div class="form-group 6">
     <button type="submit" class="submitform"> CREATE </button>
   </div>
+  <hr>
+  
 </section>
 
 </form>

@@ -6,7 +6,7 @@
 <section class="sectionindex">
 
 <div>
-  <h2 class="indextitle"> OUR ANIMALS</h2>
+  <h2 class="indextitle"> TAKE A LOOK AT OUR ANIMALS</h2>
 </div>
 
 <div class="divtable">
@@ -52,12 +52,13 @@
 </table>
 </div>
 
-<div class="new">
-  <h3 class="create"> Add a new animal </h3>
+
+
+
   <button class="add">
-    +
+    ADD NEW ANIMAL
   </button>
-</div>
+
 
 </section>
 

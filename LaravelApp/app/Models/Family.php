@@ -10,12 +10,10 @@ class Family extends Model
     use HasFactory;
 
     protected $guarded = [
-        'libelle',
-        'description',
     ];
 
     public function animal()
     {
-        $this->hasMany(Animal::class, ('animal_id'));
+        return $this->hasMany(Animal::class, ('animal_id'));
     }
 }
