@@ -13,41 +13,39 @@
 <table>
   <thead> 
     <tr> 
-      <th> Id </th>
+      <th> ID </th>
       <th> Name</th>
       <th> Description</th>
-      <th> Image </th>
+      <th> Picture </th>
       <th> Family </th>
-      <th> Continent </th>
     </tr>
   </thead>
   <tbody>
+    @forelse($animals as $animal)
     <tr>
-      <td data-column="First Name">James</td>
-      <td data-column="Last Name">Matman</td>
-      <td data-column="Job Title">Chief Sandwich Eater</td>
-      <td data-column="Twitter">@james</td>
-      <td data-column="Twitter">@james</td>
-      <td data-column="Twitter">@james</td>
+      <td > {{ $animal->id }}</td>
+      <td >{{ $animal->name_animal }}</td>
+      <td >{{ $animal->description }}</td>
+      <td > <img width="150px" height="150px" src= "{{ Storage::url($animal->image) }}"> </td>
+      <td > {{ $animal-> libelle }} </td>
+      <td> 
+      <div class="buttonsindex">
+      <a class="btnindex" href="{{ route(('dashboard.edit'))}}" > EDIT </a> 
+      <form method="POST" action="{{ route('dashboard.delete', $animal->id) }}">
+          @method('DELETE')
+          @csrf
+        <input type="submit" class="btnindex2" value="DELETE"/>
+      </form> 
+      </div>
+      </td>
+    </tr>
 
-    </tr>
+    @empty
     <tr>
-      <td data-column="First Name">Andor</td>
-      <td data-column="Last Name">Nagy</td>
-      <td data-column="Job Title">Designer</td>
-      <td data-column="Twitter">@andornagy</td>
-      <td data-column="Twitter">@james</td>
-      <td data-column="Twitter">@james</td>
+      No Category Yet
+    </tr>
+    @endforelse
 
-    </tr>
-    <tr>
-      <td data-column="First Name">Tamas</td>
-      <td data-column="Last Name">Biro</td>
-      <td data-column="Job Title">Game Tester</td>
-      <td data-column="Twitter">@tamas</td>
-      <td data-column="Twitter">@james</td>
-      <td data-column="Twitter">@james</td>
-    </tr>
   </tbody>
 </table>
 </div>

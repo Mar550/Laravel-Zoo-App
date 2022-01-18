@@ -220,7 +220,6 @@ body{
     margin-right: auto;
     width: 65%;
     color:white;
-    box-shadow: 0.5rem 0.3rem 0.3rem 0.3rem grey;
     padding: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
 
@@ -383,4 +382,45 @@ only screen and (max-width: 760px),
 		font-weight: bold;
 	}
 
+}
+
+.btnindex{
+    background-color:orange;
+    color: white;
+    font-weight: bold;
+    width: 90%;
+    height: 110%;
+    height: 20px;
+    text-align: center;
+
+
+}
+.btnindex2{
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    width: 90%;
+    height: 20px;
+    text-align: center;
+}
+
+.btnindex:hover{
+    cursor:pointer;
+    width: 100%;
+}
+
+.btnindex2:hover{
+    cursor:pointer;
+    width: 100%;
+}
+
+.buttonsindex{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.form-check{
+    font-size: 18px;
+    text-align: left;
 }

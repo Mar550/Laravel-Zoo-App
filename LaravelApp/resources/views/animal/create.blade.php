@@ -36,29 +36,24 @@
   @enderror
 
   <div class="form-group 3">
-
     <label for="exampleFormControlSelect1">Family</label>
     <select class="form-control" name="family_id" >
-    @foreach($families as $family)
-
+      @foreach($families as $family)
         <option value="{{$family->id}}" >  {{ $family->libelle }}</option>
-        @endforeach
-
-      </select>
-
-
+      @endforeach
+    </select>
   </div>
-
-  
-
 
   <div class="form-group 4">
     <label for="exampleFormControlSelect1"> Continent</label>
-    <select class="form-control" name="animal_continent">
         @foreach($continents as $continent)
-        <option name="animal_continent" value="{{ $continent->id }}"> {{ $continent->continent_name }} </option>
+        <div class="form-check" value="{{ $continent->id }}" > 
+          <input class="form-check-input" type="checkbox" >
+            <label class="form-check-label" for="defaultCheck1" name="continent_name" value="{{ $continent->id }}">
+              {{ $continent->continent_name }}
+            </label>
+        </div>
         @endforeach
-    </select>
   </div>
   
 
@@ -77,9 +72,10 @@
     <button type="submit" class="submitform"> CREATE </button>
   </div>
   <hr>
-  
-</section>
+
 
 </form>
 </div>
+</section>
+
 @endsection

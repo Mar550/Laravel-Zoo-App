@@ -7,7 +7,7 @@ use App\Models\Continent;
 use App\Models\Family;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
- 
+use Illuminate\Support\Facades\Storage;
 
 class AnimalController extends Controller
 {
@@ -18,7 +18,12 @@ class AnimalController extends Controller
      */
     public function index()
     {
-        return view('animal.index');
+       
+        $animals = Animal::join('families', 'animals.family_id','=','families.id')
+        ->select('animals.id','animals.name_animal','animals.description','animals.image','families.libelle')
+        ->orderBy('animals.created_at','desc')->get();
+
+        return view('animal.index', compact('animals'));
     }
 
     /**
@@ -29,11 +34,8 @@ class AnimalController extends Controller
     public function create()
     {     
         $families = Family::all();
-
         $continents = Continent::all();
         return view('animal.create', compact('families','continents'));
-        
-
     }
 
     /**
@@ -58,11 +60,11 @@ class AnimalController extends Controller
 
         $path = $request->file('image')->store('public/files');
 
+
         Animal::create([
             'name_animal' => $request->name_animal,
             'description' => $request->description,
             'family_id' => $request->family_id,
-            'animal_continent' => $request->animal_continent,
             'image' => $path,
 
         ]);
@@ -89,9 +91,11 @@ class AnimalController extends Controller
      * @param  \App\Models\Animal  $animal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Animal $animal)
+    public function edit($id)
     {
-
+        $animal = Animal::find($id);
+        $animalWithfamily= $animal->family_id;
+        return view('dashboard.edit', compact('animalWithfamily','animal'));
     }
 
     /**
@@ -101,9 +105,23 @@ class AnimalController extends Controller
      * @param  \App\Models\Animal  $animal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Animal $animal)
+    public function update(Request $request,$id)
     {
-        //
+        $animal = Animal::find($id);
+        $image = $animal->image;
+
+        if($request->file('image')) {
+            Storage::delete($image);
+            $image = $request->file('image')->store('public/files');
+        }
+
+        $animal->animal_name = $request->animal_name;
+        $animal->description = $request->description;
+        $animal->image = $image;
+
+        $animal->save();
+        Session::put('update', 'Animal informations updated successfully !');
+        return redirect()->route('dashboard.index');           
     }
 
     /**
@@ -112,8 +130,12 @@ class AnimalController extends Controller
      * @param  \App\Models\Animal  $animal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Animal $animal)
+    public function destroy($id)
     {
-
+        $animal = Animal::find($id);
+        if ($animal != null) {
+            $animal->delete();
+        }
+        return redirect()->route('dashboard.index');
     }
 }
