@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Animal;
 use App\Models\Continent;
 use App\Models\Family;
+use Hamcrest\Description;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+
 
 class AnimalController extends Controller
 {
@@ -17,13 +20,25 @@ class AnimalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-       
+    {   
         $animals = Animal::join('families', 'animals.family_id','=','families.id')
         ->select('animals.id','animals.name_animal','animals.description','animals.image','families.libelle')
         ->orderBy('animals.created_at','desc')->get();
 
         return view('animal.index', compact('animals'));
+    
+        //Function 'with' for continents
+        //Function 'join' for families
+        
+    }
+
+
+    public function fetchData()
+    {
+        $animaldata = Animal::all();
+        return response()->json([
+            'animals' => $animaldata,
+        ]);
     }
 
     /**
@@ -44,8 +59,10 @@ class AnimalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
-    {
+    {  
+
         $this->validate($request, [
             'name_animal' => 'required|unique:animals',
             'description' => 'required|string:animals',
@@ -60,7 +77,7 @@ class AnimalController extends Controller
 
         $path = $request->file('image')->store('public/files');
 
-
+        
         Animal::create([
             'name_animal' => $request->name_animal,
             'description' => $request->description,
@@ -68,8 +85,11 @@ class AnimalController extends Controller
             'image' => $path,
 
         ]);
+
+        $ensemble = Animal::with(['continent_name'])->get();
+        
         Session::put('message', 'Animal create successfully');
-        return redirect()->route('dashboard.index')->with('message','Category created successfully');
+        return redirect()->route('dashboard.index', compact('ensemble'))->with('message','Category created successfully');
     }
 
     /**
@@ -83,6 +103,7 @@ class AnimalController extends Controller
         $animal = Family::find($id)->animals;
         $family = Family::find($id);
         return view('show', ['animal'=>$animal,'categorie'=>$family]);
+        
     }
 
     /**
@@ -132,6 +153,14 @@ class AnimalController extends Controller
      */
     public function destroy($id)
     {
+        
+        //$animal = Animal::find($id);
+        //$animal -> delete();
+        //return response()->json([
+        //    'success' => 'Animal deleted',
+        //    'test' => 'hello',
+        //]);
+
         $animal = Animal::find($id);
         if ($animal != null) {
             $animal->delete();

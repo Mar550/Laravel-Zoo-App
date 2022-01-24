@@ -3,9 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Home</title>
-
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +29,7 @@
       </a>
     </li>
     <li>
-      <a href="#">
+      <a href="{{ route(('dashboard.index'))}}">
         <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
       </a>
     </li>
@@ -55,7 +54,7 @@
 
         <section class="background">
             <h1 class="titlehome"> YOUR NEW ZOO HAS FINALLY OPENED ! </h1>
-            <button class="booknow" type="radio"> SEE OUR ANIMALS </button>
+            <a href="{{ route(('dashboard.index')) }}" class="booknow" type="radio"> SEE OUR ANIMALS </a>
         </section>
     </body>
 </html>

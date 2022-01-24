@@ -10,5 +10,8 @@ class Continent extends Model
     use HasFactory;
     protected $guarded = [];
 
-
+    public function animal()
+    {
+        return $this->belongsToMany(Animal::class);
+    }
 }

@@ -20,17 +20,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-
 Route::prefix('dashboard')->group(function(){
     Route::get('index',[AnimalController::class, 'index'])->name('dashboard.index');
+    Route::get('indextest',[AnimalController::class, 'index'])->name('dashboard.indextest');
     Route::get('create',[AnimalController::class, 'create'])->name('dashboard.create');
     Route::post('store',[AnimalController::class, 'store'])->name('dashboard.store');
     Route::get('/animal/{id}',[AnimalController::class,'show'])->name('dashboard.show');
     Route::put('edit',[AnimalController::class,'edit'])->name('dashboard.edit');
     Route::delete('delete/{id}',[AnimalController::class,'destroy'])->name('dashboard.delete');
+    Route::get('fetchData', [AnimalController::class,"fetchData"])->name('animal.indextest');
 });
+
+
 
 
 

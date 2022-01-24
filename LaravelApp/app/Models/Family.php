@@ -17,3 +17,4 @@ class Family extends Model
         return $this->hasMany(Animal::class, ('animal_id'));
     }
 }
+

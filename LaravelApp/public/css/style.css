@@ -183,6 +183,9 @@ label{
     cursor:pointer;
     margin-left: 14rem; 
     opacity: 0.7;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 
 .booknow:hover{
@@ -275,25 +278,28 @@ body{
 
 /* INDEX TABLE */
 
+.sectionindex{
+    background-color: white;
+    margin-top: -3rem;
+}
 
 .add{
-    border-radius: 50%;
-    width: 8rem;
-    height: 5rem;
-    margin-left: 12rem;
-    background-color: black;
-    color:white;
+    width: 12rem;
+    height: 3rem;
+    margin-left: 16rem;
+    background-color: #EEEEEE;
+    color:black;
     font-size: 1rem;
     font-weight: bold;
-    margin-left: 50%;
-    margin-right: 50%;
-    margin-top: 3%;
+
+    border-top: 20px;
+    
 }
 
 .add:hover{
     cursor:pointer;
-    background-color: white;
-    color:black;
+    background-color: black;
+    color:white;
 }
 
 .indextitle{
@@ -384,6 +390,8 @@ only screen and (max-width: 760px),
 
 }
 
+
+
 .btnindex{
     background-color:orange;
     color: white;
@@ -423,4 +431,24 @@ only screen and (max-width: 760px),
 .form-check{
     font-size: 18px;
     text-align: left;
+}
+
+
+.addindexanimal{
+    border: 1px solid white;
+    background-color: white;
+    font-weight: bold;
+    padding: 2px;
+    margin-left: 5%;
+}
+
+.addindexanimal:hover{
+    background-color: black;
+    color:white;    
+}
+
+.adddiv{
+    display: flex;
+    flex-direction: row;
+
 }

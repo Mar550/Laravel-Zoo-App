@@ -18,6 +18,8 @@
       <th> Description</th>
       <th> Picture </th>
       <th> Family </th>
+      <th> Continents </th>
+
     </tr>
   </thead>
   <tbody>
@@ -28,6 +30,7 @@
       <td >{{ $animal->description }}</td>
       <td > <img width="150px" height="150px" src= "{{ Storage::url($animal->image) }}"> </td>
       <td > {{ $animal-> libelle }} </td>
+      <td > </td>
       <td> 
       <div class="buttonsindex">
       <a class="btnindex" href="{{ route(('dashboard.edit'))}}" > EDIT </a> 
@@ -36,6 +39,7 @@
           @csrf
         <input type="submit" class="btnindex2" value="DELETE"/>
       </form> 
+
       </div>
       </td>
     </tr>
@@ -51,13 +55,42 @@
 </div>
 
 
-
-
-  <button class="add">
+  <div class="adddiv">
+  <a href="{{ route(('dashboard.create')) }}">
+  <button type="button" value=" ADD NEW ANIMAL"  class="add">
+  <i class="fas fa-plus-square"></i>
     ADD NEW ANIMAL
   </button>
+  </a>
+</div>
 
 
 </section>
+<!--
+<script>
+  $.ajaxSetup({
+    headers:{
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')  
+    }
+  });
+  
+    function deleteRecord(id){
+      if(confirm('do you want to delete this item')){
+      $.ajax({
+        url:"dashboard/aniamls"+id,
+        type:'DELETE',
+        date:{
+          "message" : "No data"
+        },
 
+      success:function(response){
+        console.log(response);
+        $("#pre"+id).remove();
+        $("#record").append('<p>'+ success + '</p>');
+      }  
+    });        
+  }
+}
+</script>
+-->
 @endsection
