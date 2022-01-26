@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\ApiAnimalController;
+use App\Http\Controllers\APIauth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,10 +16,9 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('register',[APIauth::class,'register']);
+Route::post('login',[APIauth::class,'login']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
 Route::get('/keep-alive',function(){
     return response()->json([
@@ -38,6 +38,7 @@ Route::middleware('auth:api')->get('/user',function(Request $request){
         'data' => $request->user(),
     ]);
 });
+
 
 
 
@@ -66,3 +67,4 @@ Route::middleware('auth:api')->group(function(){
 
     });
 });
+
