@@ -45,17 +45,14 @@
   </div>
 
   <div class="form-group 4">
-    <label for="exampleFormControlSelect1"> Continent</label>
-        @foreach($continents as $continent)
-        <div class="form-check" value="{{ $continent->id }}" > 
-          <input class="form-check-input" type="checkbox" >
-            <label class="form-check-label" for="defaultCheck1" name="continent_name" value="{{ $continent->id }}">
-              {{ $continent->continent_name }}
-            </label>
-        </div>
-        @endforeach
+    <label for="vehicle1"> Continents </label>
+      @foreach($continents as $continent)
+        <label for="continents">{{ $continent->continent_name }}
+        </label>
+        <input type="checkbox" id="continents" name="continent_name[]" value="{{ $continent->id }}">
+      @endforeach
   </div>
-  
+
 
   <div class="form-group 5">
     <label for="exampleFormControlFile1"> Picture </label>

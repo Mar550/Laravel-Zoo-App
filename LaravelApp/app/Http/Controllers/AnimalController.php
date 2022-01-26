@@ -24,7 +24,13 @@ class AnimalController extends Controller
         $animals = Animal::join('families', 'animals.family_id','=','families.id')
         ->select('animals.id','animals.name_animal','animals.description','animals.image','families.libelle')
         ->orderBy('animals.created_at','desc')->get();
-
+        
+        foreach ($animals as $animal) {
+            foreach($animal->continents as $continent){
+                
+            }
+        }
+        
         return view('animal.index', compact('animals'));
     
         //Function 'with' for continents
@@ -32,14 +38,6 @@ class AnimalController extends Controller
         
     }
 
-
-    public function fetchData()
-    {
-        $animaldata = Animal::all();
-        return response()->json([
-            'animals' => $animaldata,
-        ]);
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -78,7 +76,7 @@ class AnimalController extends Controller
         $path = $request->file('image')->store('public/files');
 
         
-        Animal::create([
+        $animalsdata = Animal::create([
             'name_animal' => $request->name_animal,
             'description' => $request->description,
             'family_id' => $request->family_id,
@@ -86,10 +84,18 @@ class AnimalController extends Controller
 
         ]);
 
-        $ensemble = Animal::with(['continent_name'])->get();
-        
+        $continent = $request->continent_name;
+
+        foreach($continent as $key => $name){
+            $insert = [
+                'animal_id' => $animalsdata->id,
+                'continent_id' => $continent[$key],
+            ];
+
+            DB::table('animals_continents')->insert($insert);
+        } 
         Session::put('message', 'Animal create successfully');
-        return redirect()->route('dashboard.index', compact('ensemble'))->with('message','Category created successfully');
+        return redirect()->route('dashboard.index')->with('message','Animal created successfully');
     }
 
     /**
@@ -100,9 +106,8 @@ class AnimalController extends Controller
      */
     public function show($id)
     {
-        $animal = Family::find($id)->animals;
-        $family = Family::find($id);
-        return view('show', ['animal'=>$animal,'categorie'=>$family]);
+        $animal = Animal::find($id);
+        return view('animal.show', compact('show'));
         
     }
 
@@ -115,8 +120,9 @@ class AnimalController extends Controller
     public function edit($id)
     {
         $animal = Animal::find($id);
-        $animalWithfamily= $animal->family_id;
-        return view('dashboard.edit', compact('animalWithfamily','animal'));
+        $continent = Continent::all();
+        $family = Family::all();
+        return view('dashboard.edit', compact('animal', 'continent', 'family'));
     }
 
     /**

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\ApiAnimalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +38,7 @@ Route::middleware('auth:api')->get('/user',function(Request $request){
         'data' => $request->user(),
     ]);
 });
+
 
 
 Route::middleware('auth:api')->group(function(){   

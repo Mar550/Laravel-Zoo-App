@@ -29,8 +29,12 @@
       <td >{{ $animal->name_animal }}</td>
       <td >{{ $animal->description }}</td>
       <td > <img width="150px" height="150px" src= "{{ Storage::url($animal->image) }}"> </td>
-      <td > {{ $animal-> libelle }} </td>
-      <td > </td>
+      <td > {{ $animal->libelle }} </td>
+      <td >
+      @foreach($animal->continents as $cont)
+       <p> {{ $cont->continent_name}} </p>
+      @endforeach
+      </td>
       <td> 
       <div class="buttonsindex">
       <a class="btnindex" href="{{ route(('dashboard.edit'))}}" > EDIT </a> 

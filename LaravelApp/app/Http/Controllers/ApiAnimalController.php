@@ -15,8 +15,14 @@ class ApiAnimalController extends Controller
      */
     public function index(animal $animal)
     {
-        $animal = Animal::with(['family','continent'])->get();
-        return AnimalResource::collection($animal);
+        //$animal = Animal::with(['family','continent'])->get();
+        //return AnimalResource::collection($animal);
+        $animals = Animal::all();
+        return response()->json([
+            'status'=> 200,
+            'animals' => $animals,
+            'message'=> 'Animal Added Successfully',
+        ]);
     }
 
     /**
@@ -37,7 +43,7 @@ class ApiAnimalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+   
     }
 
     /**

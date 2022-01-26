@@ -13,7 +13,7 @@ class CreateAnimalsContinentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('animals_continents', function (Blueprint $table) {
+        Schema::create('animal_continent', function (Blueprint $table) {
         $table->id();
         $table->foreignId('animal_id')->constrained();
         $table->foreignId('continent_id')->constrained();

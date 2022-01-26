@@ -13,12 +13,11 @@ class Animal extends Model
     public function family() 
     {
         return $this->belongsTo(Family::class, 'family_id');
-    }
+    } 
 
-    public function continent()
+    public function continents() 
     {
         return $this->belongsToMany(Continent::class);
-    }
+    }   
 
-}   
-
+}
