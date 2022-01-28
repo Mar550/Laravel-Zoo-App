@@ -122,7 +122,8 @@ class AnimalController extends Controller
         $animal = Animal::find($id);
         $continent = Continent::all();
         $family = Family::all();
-        return view('dashboard.edit', compact('animal', 'continent', 'family'));
+        return redirect()->route('dashboard.edit');
+        return view('animal.edit');
     }
 
     /**

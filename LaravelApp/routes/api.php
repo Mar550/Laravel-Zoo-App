@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 Route::post('register',[APIauth::class,'register']);
 Route::post('login',[APIauth::class,'login']);
-
 
 Route::get('/keep-alive',function(){
     return response()->json([
@@ -31,16 +31,12 @@ Route::get('/help',function(){
     return view('families.show');
 });
 
-
-Route::middleware('auth:api')->get('/user',function(Request $request){
+/*** Route::middleware('auth:api')->get('/user',function(Request $request){
     return response()->json([
         'message' => 'User authenticated successfully', 
         'data' => $request->user(),
     ]);
-});
-
-
-
+}); **/
 
 Route::middleware('auth:api')->group(function(){   
     Route::prefix('users')->group(function(){
