@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Carbon;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Passport\HasApiTokens;
 
 class APIauth extends Controller
 {
+    use HasApiTokens;
+
     public function register(Request $request)
     {
         $validator=Validator::make($request->all(),[
@@ -34,7 +37,7 @@ class APIauth extends Controller
             $userdata = User::create([
                 'name'=>$request->input('name'),
                 'email'=>$request->input('email'),
-                'password'=>Hash::make($request->input('password')),
+                'password'=>Hash::make($request->password),
             ]);
 
             $responseArray = [];
@@ -58,13 +61,14 @@ class APIauth extends Controller
                     return response()->json([
                         'message' => 'Sorry something is wrong',
                         'status' => 404
-                    ]);
+                    ],404);
                 }    
             }
     }
 
     public function Login(Request $request)
     {
+        
         $validator=Validator::make($request->all(),[
             'email' => ['required','email','email'],
             'password' => ['required'],
@@ -77,31 +81,39 @@ class APIauth extends Controller
 
         if ($validator->fails())
         {
-            return response()->json(['error' => $validator->getMessageBag()],403);
+            return response()->json([
+                'error' => $validator->getMessageBag(),
+                'status' => 202
+            ],202);
         } 
+
+        
         else
         {  
-            $user = User::where('email',$request->email)->first();
+            $credentials = [
+                'email'=> $request['email'],
+                'password' => $request['password'],
+            ];
             
-            if(!$user || Hash::check($request->password, $user->password)){
-                return response()->json([
-                    'status'=>403,
-                    'message' => 'Invalid Credentials',
-                ]);
-            }
-            else
+            if (Auth::attempt($credentials))
             {
-                $token =  $user->createToken($user->email.'_Token')->plainTextToken;
-                
+                $user = Auth::user();
+                $user = auth()->user();
+                $token = auth()->user()->createToken('mytoken')->accessToken;                    
                 return response()->json([
-                    'data'=>$user,
-                    'status'=>200,
-                    'username'=>$user->name,
-                    'token'=>$token,
-                    'message'=>'Logged sucessfully'
-                ]);
-                
+                            'status'=>200,
+                            'token_type'=>'Bearer',
+                            'data'=>$user,
+                            'token'=>$token,
+                            'message'=>'Connection done !'
+
+                        ],200);
             }
+
+            else {
+                return response()->json(['message'=>'Invalid email or password','status'=>201],201);
+            }
+                
         }
     }
 }
