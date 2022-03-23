@@ -37,7 +37,7 @@
       </td>
       <td> 
       <div class="buttonsindex">
-      <a class="btnindex" href="{{ route(('dashboard.edit'))}}" > EDIT </a> 
+      <a class="btnindex" href="{{ route('dashboard.edit', $animal->id)}}" > EDIT </a> 
       <form method="POST" action="{{ route('dashboard.delete', $animal->id) }}">
           @method('DELETE')
           @csrf

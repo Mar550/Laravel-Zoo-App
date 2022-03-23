@@ -15,8 +15,7 @@
     <label for="exampleFormControlInput1"> Name</label>
     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter the animal's name" name="name_animal">
   </div>
-    
-
+  
   @error('name_animal')
     <span class="invalid-feedback" role="alert">
       <strong>{{ $message }}</strong>
@@ -47,12 +46,10 @@
   <div class="form-group 4">
     <label for="vehicle1"> Continents </label>
       @foreach($continents as $continent)
-        <label for="continents">{{ $continent->continent_name }}
-        </label>
+        <label for="continents">{{ $continent->continent_name }} </label>
         <input type="checkbox" id="continents" name="continent_name[]" value="{{ $continent->id }}">
       @endforeach
   </div>
-
 
   <div class="form-group 5">
     <label for="exampleFormControlFile1"> Picture </label>

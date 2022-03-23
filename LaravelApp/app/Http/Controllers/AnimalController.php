@@ -91,9 +91,8 @@ class AnimalController extends Controller
                 'animal_id' => $animalsdata->id,
                 'continent_id' => $continent[$key],
             ];
-
-            DB::table('animals_continents')->insert($insert);
-        } 
+            DB::table('animal_continent')->insert($insert);
+        }  
         Session::put('message', 'Animal create successfully');
         return redirect()->route('dashboard.index')->with('message','Animal created successfully');
     }
@@ -120,12 +119,46 @@ class AnimalController extends Controller
     public function edit($id)
     {
         $animal = Animal::find($id);
-        $continent = Continent::all();
-        $family = Family::all();
-        return redirect()->route('dashboard.edit');
-        return view('animal.edit');
+        $continents = Continent::all();
+        $families = Family::all();
+        return view('animal.edit',['animal'=>$animal]);
     }
 
+    public function showData($id)
+    {
+        $animal = Animal::find($id);
+        $families = Family::all();
+        $continents = Continent::all();
+        return view('animal.edit',['animal'=>$animal],compact('families','continents'));
+    }
+
+
+    public function updateData(Request $request,$id)
+    {
+        $animal = Animal::find($id);
+        $animal->name_animal = $request->name_animal;
+        $animal->description = $request->description;
+        $image = $animal->image;
+        if($request->file('image')) {
+            Storage::delete($image);
+            $image = $request->file('image')->store('public/files');
+        }
+        $animal->image = $image;
+        $animal->family_id = $request->family_id;
+        
+        $continent = $request->continent_name;
+        foreach($continent as $key => $name){
+            $insert = [
+                'animal_id' => $animal->id,
+                'continent_id' => $continent[$key],
+            ];
+            DB::table('animal_continent')->insert($insert);
+        }
+        
+        $animal->update();
+        Session::put('update', 'Animal informations updated successfully !');
+        return redirect()->route('dashboard.index');           
+    }
     /**
      * Update the specified resource in storage.
      *

@@ -11,6 +11,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function register()
+    {
+        return "Hello it's register function";
+    }
+    
     public function index()
     {
         //

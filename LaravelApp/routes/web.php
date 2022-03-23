@@ -26,7 +26,8 @@ Route::prefix('dashboard')->group(function(){
     Route::get('create',[AnimalController::class, 'create'])->name('dashboard.create');
     Route::post('store',[AnimalController::class, 'store'])->name('dashboard.store');
     Route::get('/animal/{id}',[AnimalController::class,'show'])->name('dashboard.show');
-    Route::put('edit',[AnimalController::class,'edit'])->name('dashboard.edit');
+    Route::get('edit/{id}',[AnimalController::class,'showData'])->name('dashboard.edit');
+    Route::put('update/{id}',[AnimalController::class,'updateData'])->name('dashboard.update');
     Route::delete('delete/{id}',[AnimalController::class,'destroy'])->name('dashboard.delete');
     Route::get('fetchData', [AnimalController::class,"fetchData"])->name('animal.indextest');
 });
