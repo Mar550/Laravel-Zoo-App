@@ -15,8 +15,8 @@ class CreateAnimalsContinentsTable extends Migration
     {
         Schema::create('animal_continent', function (Blueprint $table) {
         $table->id();
-        $table->foreignId('animal_id')->constrained();
-        $table->foreignId('continent_id')->constrained();
+        $table->foreignId('animal_id')->constrained()->onDelete('cascade');
+        $table->foreignId('continent_id')->constrained()->onDelete('cascade');
         $table->timestamps();
         });
     }
