@@ -1,0 +1,61 @@
+#navigation{
+background-color: rgb(14, 180, 147);
+}
+
+
+.animalpic{
+    width: 250px;
+    border-radius: 10px;
+}
+
+.edit-del{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 2rem;
+    margin-top: 10px;
+}
+
+#edit{
+    width: 7rem;
+    background-color: orange;
+    border: none;
+}
+#delete{
+    width: 7rem;
+    background-color: red;
+    border: none;
+}
+
+.card-title{
+    color:black;
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+    color:royalblue;
+}
+
+.description{
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+}
+
+.card-text{
+    border: 1px solid rgb(14, 180, 147);
+    color: black;
+}
+
+.containercards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+}   
+
+.card{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+}

@@ -20,8 +20,7 @@
     <span class="invalid-feedback" role="alert">
       <strong>{{ $message }}</strong>
     </span> 
-  @enderror
-
+  @enderror  
 
   <div class="form-group 2">
     <label for="exampleFormControlTextarea1"> Description </label>

@@ -17,8 +17,22 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+return view('layout');
 });
+
+Route::get('/card', function () {
+return view('card');
+});
+
+Route::get('/families', function () {
+    return view('families');
+    });
+
+Route::get('/continents', function () {
+    return view('continents');
+    });
+
+
 
 Route::prefix('dashboard')->group(function(){
     Route::get('index',[AnimalController::class, 'index'])->name('dashboard.index');
@@ -31,7 +45,6 @@ Route::prefix('dashboard')->group(function(){
     Route::delete('delete/{id}',[AnimalController::class,'destroy'])->name('dashboard.delete');
     Route::get('fetchData', [AnimalController::class,"fetchData"])->name('animal.indextest');
 });
-
 
 
 
