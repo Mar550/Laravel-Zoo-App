@@ -3933,6 +3933,7 @@ textarea.form-control-lg {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  font-size: 40px;
 }
 
 .nav-link {
@@ -4040,7 +4041,6 @@ textarea.form-control-lg {
 .navbar > .container-xl,
 .navbar > .container-xxl {
   display: flex;
-  flex-wrap: inherit;
   align-items: center;
   justify-content: space-between;
 }
@@ -4054,9 +4054,8 @@ textarea.form-control-lg {
 }
 .navbar-nav {
   display: flex;
-  flex-direction: column;
-  padding-left: 0;
-  margin-bottom: 0;
+  flex-direction: row;
+  margin-left: 30%;
   list-style: none;
 }
 .navbar-nav .nav-link {

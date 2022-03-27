@@ -20,6 +20,7 @@
 		<!-- Google Font -->
 		
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 		<!-- CSS
 		================================================== -->
@@ -38,8 +39,11 @@
 
         <link rel="stylesheet" href="css/over.css">
 
+
+
 		<!-- Modernizer Script for old Browsers -->
         <script src="js/modernizr-2.6.2.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     </head>
 	
@@ -49,7 +53,7 @@
         Fixed Navigation
         ==================================== -->
         <header id="navigation" class="navbar-fixed-top navbar">
-            <div class="container">
+            <div class="container" style="flex-wrap: nowrap;">
                 <div class="navbar-header">
                     <!-- responsive nav button -->
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -61,7 +65,7 @@
 					<!-- logo -->
                     <a class="navbar-brand" href="#body">
 						<h1 id="logo">
-							<img src="img/logo2.png" width=24% alt="Brandi">
+							<img src="img/logo2.png" width=27% alt="Brandi">
 						</h1>
 					</a>
 					<!-- /logo -->
@@ -69,7 +73,7 @@
 
 				<!-- main nav -->
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
-                    <ul id="nav" class="nav navbar-nav">
+                    <ul id="nav" class="nav navbar-nav" style="display: flex; flex-direction: row; gap: 5px; margin-left: 35%; font-size: 16px;">
                         <li class="current"><a href="#body">Home</a></li>
                         <li><a href="#features">Animals</a></li>
                         <li><a href="#works">Families</a></li>

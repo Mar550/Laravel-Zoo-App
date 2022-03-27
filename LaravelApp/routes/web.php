@@ -24,6 +24,10 @@ Route::get('/card', function () {
 return view('card');
 });
 
+Route::get('/create', function () {
+    return view('createcard');
+    });
+
 Route::get('/families', function () {
     return view('families');
     });

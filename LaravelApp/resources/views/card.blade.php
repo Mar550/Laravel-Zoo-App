@@ -64,11 +64,11 @@
 
         <div class="containercards">
 
-        <div class="card" style="width: 28rem;">
+        <div class="card" style="width: 32rem;">
         <h5 class="card-title">PUMA </h5>
         <hr>
         <img src="img/puma.png" class="animalpic" alt="">  
-        <div class="card-body">
+        <div class="card-bod">
                 <br>
                 <p class="description"> Description: Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <br>
@@ -83,7 +83,43 @@
         </div>
         </div>
 
-        
+        <div class="card" style="width: 32rem;">
+        <h5 class="card-title">PUMA </h5>
+        <hr>
+        <img src="img/puma.png" class="animalpic" alt="">  
+        <div class="card-bod">
+                <br>
+                <p class="description"> Description: Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <br>
+                <p class="card-text">Continents: Some quick example text </p>
+                <br>
+                <p class="card-text">Families: Some quick example text</p>
+
+                <div class="edit-del">
+                <a href="#" class="btn btn-primary" id="edit"> EDIT</a>
+                <a href="#" class="btn btn-primary" id="delete"> DELETE</a>
+                </div>
+        </div>
+        </div>
+
+        <div class="card" style="width: 32rem;">
+        <h5 class="card-title">PUMA </h5>
+        <hr>
+        <img src="img/puma.png" class="animalpic" alt="">  
+        <div class="card-bod">
+                <br>
+                <p class="description"> Description: Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <br>
+                <p class="card-text">Continents: Some quick example text </p>
+                <br>
+                <p class="card-text">Families: Some quick example text</p>
+
+                <div class="edit-del">
+                <a href="#" class="btn btn-primary" id="edit"> EDIT</a>
+                <a href="#" class="btn btn-primary" id="delete"> DELETE</a>
+                </div>
+        </div>
+        </div>
 
         </div>
         </section>
