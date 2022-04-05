@@ -20,9 +20,7 @@ Route::get('/', function () {
 return view('layout');
 });
 
-Route::get('/card', function () {
-return view('animal2.card');
-});
+
 
 Route::get('/families', function () {
     return view('families');
@@ -33,13 +31,13 @@ Route::get('/continents', function () {
     });
 
 
-    Route::get('index',[AnimalController::class,'index'])->name('index');
+    Route::get('card',[AnimalController::class,'index'])->name('card');
     Route::get('create',[AnimalController::class,'create'])->name('create');
-    Route::post('store',[AnimalController::class,'store'])->name('dashboard.store');
-    Route::get('/animal/{id}',[AnimalController::class,'show'])->name('dashboard.show');
+    Route::post('store',[AnimalController::class,'store'])->name('store');
+    Route::get('/animal/{id}',[AnimalController::class,'show'])->name('show');
     Route::get('edit/{id}',[AnimalController::class,'showData'])->name('dashboard.edit');
     Route::put('update/{id}',[AnimalController::class,'updateData'])->name('dashboard.update');
-    Route::delete('delete/{id}',[AnimalController::class,'destroy'])->name('dashboard.delete');
+    Route::delete('delete/{id}',[AnimalController::class,'destroy'])->name('delete');
 
 
 

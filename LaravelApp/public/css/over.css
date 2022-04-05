@@ -55,6 +55,7 @@ background-color: rgb(14, 180, 147);
 }   
 
 .card{
+    margin-top: 6%;
     border: 1px solid black;
     border-radius: 5px;
     padding: 10px;

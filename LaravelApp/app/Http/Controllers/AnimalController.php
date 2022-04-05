@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
-
 class AnimalController extends Controller
 {
     /**
@@ -24,18 +23,17 @@ class AnimalController extends Controller
         $animals = Animal::join('families', 'animals.family_id','=','families.id')
         ->select('animals.id','animals.name_animal','animals.description','animals.image','families.libelle')
         ->orderBy('animals.created_at','desc')->get();
-        
+        $animals = Animal::paginate(6);
+
         foreach ($animals as $animal) {
             foreach($animal->continents as $continent){
-                
+    
             }
         }
-        
-        return view('animal.index', compact('animals'));
-    
+
+        return view('animal2.card', compact('animals'));
         //Function 'with' for continents
-        //Function 'join' for families
-        
+        //Function 'join' for families    
     }
 
 
@@ -189,19 +187,11 @@ class AnimalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        
-        //$animal = Animal::find($id);
-        //$animal -> delete();
-        //return response()->json([
-        //    'success' => 'Animal deleted',
-        //    'test' => 'hello',
-        //]);
-
+    {  
         $animal = Animal::find($id);
         if ($animal != null) {
             $animal->delete();
         }
-        return redirect()->route('dashboard.index');
+        return redirect()->route('card');
     }
 }
