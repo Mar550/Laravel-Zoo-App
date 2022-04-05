@@ -67,3 +67,49 @@ background-color: rgb(14, 180, 147);
     margin-right: auto;
     margin-top: 8rem;
 }
+
+#carouselExampleCaptions2{
+    margin-top: 10rem;
+    width: 650px;
+    margin-left: 3rem;
+}
+
+.sectioncontainers{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.container3{
+    width: 40%;
+    margin-top: 10rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    border-radius: 10px;
+    opacity: 0.9;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#buttoncreate{
+    margin-top: 2rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    background-color: rgb(14, 180, 147);
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#buttoncreate:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+
+.createtitle{
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}

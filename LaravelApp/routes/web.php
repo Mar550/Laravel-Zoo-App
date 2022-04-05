@@ -21,12 +21,8 @@ return view('layout');
 });
 
 Route::get('/card', function () {
-return view('card');
+return view('animal2.card');
 });
-
-Route::get('/create', function () {
-    return view('createcard');
-    });
 
 Route::get('/families', function () {
     return view('families');
@@ -37,11 +33,20 @@ Route::get('/continents', function () {
     });
 
 
+    Route::get('index',[AnimalController::class,'index'])->name('index');
+    Route::get('create',[AnimalController::class,'create'])->name('create');
+    Route::post('store',[AnimalController::class,'store'])->name('dashboard.store');
+    Route::get('/animal/{id}',[AnimalController::class,'show'])->name('dashboard.show');
+    Route::get('edit/{id}',[AnimalController::class,'showData'])->name('dashboard.edit');
+    Route::put('update/{id}',[AnimalController::class,'updateData'])->name('dashboard.update');
+    Route::delete('delete/{id}',[AnimalController::class,'destroy'])->name('dashboard.delete');
+
+
 
 Route::prefix('dashboard')->group(function(){
     Route::get('index',[AnimalController::class, 'index'])->name('dashboard.index');
     Route::get('indextest',[AnimalController::class, 'index'])->name('dashboard.indextest');
-    Route::get('create',[AnimalController::class, 'create'])->name('dashboard.create');
+ /** Route::get('create',[AnimalController::class, 'create'])->name('dashboard.create'); */
     Route::post('store',[AnimalController::class, 'store'])->name('dashboard.store');
     Route::get('/animal/{id}',[AnimalController::class,'show'])->name('dashboard.show');
     Route::get('edit/{id}',[AnimalController::class,'showData'])->name('dashboard.edit');

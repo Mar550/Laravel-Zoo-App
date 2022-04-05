@@ -48,7 +48,7 @@ class AnimalController extends Controller
     {     
         $families = Family::all();
         $continents = Continent::all();
-        return view('animal.create', compact('families','continents'));
+        return view('animal2.createcard', compact('families','continents'));
     }
 
     /**
@@ -60,7 +60,6 @@ class AnimalController extends Controller
 
     public function store(Request $request)
     {  
-
         $this->validate($request, [
             'name_animal' => 'required|unique:animals',
             'description' => 'required|string:animals',
@@ -74,7 +73,6 @@ class AnimalController extends Controller
         ]);
 
         $path = $request->file('image')->store('public/files');
-
         
         $animalsdata = Animal::create([
             'name_animal' => $request->name_animal,
@@ -106,8 +104,7 @@ class AnimalController extends Controller
     public function show($id)
     {
         $animal = Animal::find($id);
-        return view('animal.show', compact('show'));
-        
+        return view('animal.show', compact('show'));   
     }
 
     /**
