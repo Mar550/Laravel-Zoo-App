@@ -4,8 +4,9 @@ background-color: rgb(14, 180, 147);
 
 
 .animalpic{
-    width: 250px;
+    width: 28rem;
     border-radius: 10px;
+    margin-left: 2%;
 }
 
 .edit-del{
@@ -14,17 +15,17 @@ background-color: rgb(14, 180, 147);
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    gap: 2rem;
-    margin-top: 10px;
+    gap: 5rem;
+    margin-top: 2rem;
 }
 
 #edit{
-    width: 7rem;
+    width: 8rem;
     background-color: orange;
     border: none;
 }
 #delete{
-    width: 7rem;
+    width: 8rem;
     background-color: red;
     border: none;
 }
@@ -51,6 +52,7 @@ background-color: rgb(14, 180, 147);
 .containercards{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
     margin-left: 8%;
 }   
 
@@ -114,3 +116,8 @@ background-color: rgb(14, 180, 147);
     color: black;
     font-weight: bold;
 }
+
+.titlegras{
+    font-weight: bold;
+}
+

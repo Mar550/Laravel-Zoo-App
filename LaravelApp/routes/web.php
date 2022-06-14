@@ -17,41 +17,18 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-return view('layout');
-});
-
-
-
-Route::get('/families', function () {
-    return view('families');
+    return view('welcome');
     });
-
-Route::get('/continents', function () {
-    return view('continents');
-    });
-
-
-    Route::get('card',[AnimalController::class,'index'])->name('card');
-    Route::get('create',[AnimalController::class,'create'])->name('create');
-    Route::post('store',[AnimalController::class,'store'])->name('store');
-    Route::get('/animal/{id}',[AnimalController::class,'show'])->name('show');
-    Route::get('edit/{id}',[AnimalController::class,'showData'])->name('dashboard.edit');
-    Route::put('update/{id}',[AnimalController::class,'updateData'])->name('dashboard.update');
-    Route::delete('delete/{id}',[AnimalController::class,'destroy'])->name('delete');
+Route::get('index',[AnimalController::class,'index'])->name('index');
+Route::get('create',[AnimalController::class,'create'])->name('create');
+Route::post('store',[AnimalController::class,'store'])->name('store');
+Route::get('/animal/{id}',[AnimalController::class,'show'])->name('show');
+Route::get('edit/{id}',[AnimalController::class,'edit'])->name('edit');
+Route::put('update/{id}',[AnimalController::class,'update'])->name('update');
+Route::delete('delete/{id}',[AnimalController::class,'destroy'])->name('delete');
+Route::get('families',[FamilyController::class,'index'])->name('families');
 
 
-
-Route::prefix('dashboard')->group(function(){
-    Route::get('index',[AnimalController::class, 'index'])->name('dashboard.index');
-    Route::get('indextest',[AnimalController::class, 'index'])->name('dashboard.indextest');
- /** Route::get('create',[AnimalController::class, 'create'])->name('dashboard.create'); */
-    Route::post('store',[AnimalController::class, 'store'])->name('dashboard.store');
-    Route::get('/animal/{id}',[AnimalController::class,'show'])->name('dashboard.show');
-    Route::get('edit/{id}',[AnimalController::class,'showData'])->name('dashboard.edit');
-    Route::put('update/{id}',[AnimalController::class,'updateData'])->name('dashboard.update');
-    Route::delete('delete/{id}',[AnimalController::class,'destroy'])->name('dashboard.delete');
-    Route::get('fetchData', [AnimalController::class,"fetchData"])->name('animal.indextest');
-});
 
 
 

@@ -14,8 +14,8 @@ class FamilyController extends Controller
      */
     public function index()
     {
-        $families = Family::withCount('animals')->orderBy('name')->get();
-        return view('home.dashboard.create', compact('families'));
+        $families = Family::orderBy('libelle')->get();
+        return view('family.families', compact('families'));
     }
 
     /**

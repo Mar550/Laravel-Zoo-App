@@ -22,16 +22,15 @@ class AnimalController extends Controller
     {   
         $animals = Animal::join('families', 'animals.family_id','=','families.id')
         ->select('animals.id','animals.name_animal','animals.description','animals.image','families.libelle')
-        ->orderBy('animals.created_at','desc')->get();
-        $animals = Animal::paginate(6);
+        ->orderBy('animals.created_at','asc')->paginate(6);
 
         foreach ($animals as $animal) {
             foreach($animal->continents as $continent){
     
             }
         }
-
-        return view('animal2.card', compact('animals'));
+    
+        return view('animal.index', compact('animals'));
         //Function 'with' for continents
         //Function 'join' for families    
     }
@@ -43,12 +42,12 @@ class AnimalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {     
+    {   
+        $animals = Animal::all();
         $families = Family::all();
         $continents = Continent::all();
-        return view('animal2.createcard', compact('families','continents'));
+        return view('animal.create', compact('families','continents'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -77,7 +76,6 @@ class AnimalController extends Controller
             'description' => $request->description,
             'family_id' => $request->family_id,
             'image' => $path,
-
         ]);
 
         $continent = $request->continent_name;
@@ -90,7 +88,7 @@ class AnimalController extends Controller
             DB::table('animal_continent')->insert($insert);
         }  
         Session::put('message', 'Animal create successfully');
-        return redirect()->route('dashboard.index')->with('message','Animal created successfully');
+        return view('animal.index')->with('message','Animal created successfully');
     }
 
     /**
@@ -102,7 +100,7 @@ class AnimalController extends Controller
     public function show($id)
     {
         $animal = Animal::find($id);
-        return view('animal.show', compact('show'));   
+        return view('animal.edit', compact('show'));   
     }
 
     /**
@@ -111,15 +109,8 @@ class AnimalController extends Controller
      * @param  \App\Models\Animal  $animal
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        $animal = Animal::find($id);
-        $continents = Continent::all();
-        $families = Family::all();
-        return view('animal.edit',['animal'=>$animal]);
-    }
 
-    public function showData($id)
+    public function edit($id)
     {
         $animal = Animal::find($id);
         $families = Family::all();
@@ -128,7 +119,7 @@ class AnimalController extends Controller
     }
 
 
-    public function updateData(Request $request,$id)
+    public function update(Request $request,$id)
     {
         $animal = Animal::find($id);
         $animal->name_animal = $request->name_animal;
@@ -152,7 +143,7 @@ class AnimalController extends Controller
         
         $animal->update();
         Session::put('update', 'Animal informations updated successfully !');
-        return redirect()->route('dashboard.index');           
+        return redirect()->route('index');           
     }
     /**
      * Update the specified resource in storage.
@@ -161,24 +152,7 @@ class AnimalController extends Controller
      * @param  \App\Models\Animal  $animal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
-    {
-        $animal = Animal::find($id);
-        $image = $animal->image;
-
-        if($request->file('image')) {
-            Storage::delete($image);
-            $image = $request->file('image')->store('public/files');
-        }
-
-        $animal->animal_name = $request->animal_name;
-        $animal->description = $request->description;
-        $animal->image = $image;
-
-        $animal->save();
-        Session::put('update', 'Animal informations updated successfully !');
-        return redirect()->route('dashboard.index');           
-    }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -192,6 +166,6 @@ class AnimalController extends Controller
         if ($animal != null) {
             $animal->delete();
         }
-        return redirect()->route('card');
+        return redirect()->route('index');
     }
 }
