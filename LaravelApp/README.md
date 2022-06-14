@@ -1,66 +1,71 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# ZOO SPACE
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+ZooSpace is an application to list the animals in a Zoo. This was my first full-stack application created using Laravel. The animals present in the zoo are listed, the user can create, edit or delete these animals. Each animal in the zoo should belong to one family, and to one or many continents.
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## How to run the app
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. Download the application and open the folder
+2. Install all dependencies using the ‘npm I’ command.
+3. Start the web server using the ‘php artisan serve’. The app will be served at http://localhost:80000/.
+4. Go to http://localhost:80000/ in your browser and access to the home page.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## User stories
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- A user can see the list of the currently present animals
+- A user can create a new animal
+- A user can edit the informations of an existing animal
+- A user can delete an existing animal
+- A user can search for an animal among the existing ones
+- A user can view a list of the continents from which the existing animals come from.
+- A user can view a list of the families to which the existing animals belong.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Features
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- Creating an animal
+	The animal created is displayed of the « Animals » page.
+	The animal informations must be relevant and complete to be validated.
 
-### Premium Partners
+- Editing an animal
+	The animal informations are displayed on an editable form.
+	The animal new informations must be relevant and complete to be validated.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+- Deleting an animal
+	The animal deleted is removed from the database and doesn’t appear anymore.
 
-## Contributing
+- Searching an animal
+	The keyword searched gets sent to backend and allows to get any corresponding animal among the existing ones. 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+## Coming features
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- Place the animals in a world map image following the continents they are present in.
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Technologies
 
-## License
+- PHP
+- Laravel
+- JQuery
+- JavaScript
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Dependencies
+
+- Popperjs/core 2.20.2
+- Axios 0.21
+- Bootstrap 5.1.3
+- Caravel-mix 6.0.6
+- Lodash 4.17.19
+- Postcss 8.1.14
+- Sass 1.32.11
+- Sass-loader 11.0.1
+
+
+## What the app looks like
+<img width="1438" alt="Capture d’écran 2022-06-14 à 16 45 36" src="https://user-images.githubusercontent.com/85247784/173633102-1a81fd76-b113-4663-8cf3-08a5b850bd1c.png">
+<img width="1438" alt="screenshot-zoospace-2" src="https://user-images.githubusercontent.com/85247784/173633137-0f19f8a6-4346-4d08-b978-aa0981456741.png">
+<img width="1438" alt="screenshot-zoospace-3" src="https://user-images.githubusercontent.com/85247784/173633159-698fadca-1e02-4670-b2a6-2017b44168e3.png">
+
